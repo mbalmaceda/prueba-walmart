@@ -7,6 +7,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface SearchProductService {
 
-  Products getProductById();
+  Products getProductById(Long idProducto);
   List<Products> getAllProducts();
 }
