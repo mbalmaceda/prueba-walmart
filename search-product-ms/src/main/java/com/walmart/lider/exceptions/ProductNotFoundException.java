@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class ProductNotFoundException extends RuntimeException{
-  public ProductNotFoundException(Long id) {
+  public ProductNotFoundException(Object id) {
     super("Could not find employee " + id);
   }
 }
