@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import { ProductsComponent} from './products/products.component'
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
   delayTime = 500;
   searches: string[] = [];
 
-  emailFormControl = new FormControl('', [
+  searchFormControl = new FormControl('', [
     Validators.required
   ]);
   

@@ -345,16 +345,14 @@
   <div class="card-container">
     <form class="example-form">
       <mat-form-field class="example-full-width">
-        <mat-label>Favorite food</mat-label>
-        <input matInput appDelayedInput [formControl]="emailFormControl" (delayedInput)="search($event)" placeholder="Ex. Animal, Lámina">
-        <mat-error *ngIf="emailFormControl.hasError('required')">
+        <mat-label>Buscar productos</mat-label>
+        <input matInput appDelayedInput [formControl]="searchFormControl" (delayedInput)="search($event)" placeholder="Ex. Animal, Lámina">
+        <mat-error *ngIf="searchFormControl.hasError('required')">
           Favoritefood is <strong>required</strong>
         </mat-error>
       </mat-form-field>
     </form>
   </div>
-
-  <p *ngFor="let item of searches"> {{item}} </p>
 
   <div class="card-container">
     <a class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial">
