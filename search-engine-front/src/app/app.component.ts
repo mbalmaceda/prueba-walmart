@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import { ProductsComponent} from './products/products.component'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,21 +11,15 @@ export class AppComponent {
   title = 'search-engine-front';
   delayTime = 500;
   searches: string[] = [];
+  
+  search: any = { search : ''};
 
   searchFormControl = new FormControl('', [
     Validators.required
   ]);
   
-  search($event: Event) {
-    console.log($event);
-
-    this.searches.push(
-      /**
-       * You need to explicitly tell TypeScript the type of the HTMLElement which is your target.
-       * @see https://stackoverflow.com/a/42066698/6924437
-       */
-      ($event.target as HTMLInputElement).value
-    );
-
+  searchEngine($event: Event) {
+    console.log(($event.target as HTMLInputElement).value);
+    this.search = { search : ($event.target as HTMLInputElement).value};
   }
 }

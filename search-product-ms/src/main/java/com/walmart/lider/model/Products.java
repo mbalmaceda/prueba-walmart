@@ -21,3 +21,4 @@ public class Products {
   private String image;
   private Integer price;
 }
+;

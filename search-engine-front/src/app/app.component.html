@@ -346,15 +346,37 @@
     <form class="example-form">
       <mat-form-field class="example-full-width">
         <mat-label>Buscar productos</mat-label>
-        <input matInput appDelayedInput [formControl]="searchFormControl" (delayedInput)="search($event)" placeholder="Ex. Animal, Lámina">
+        <input matInput appDelayedInput [formControl]="searchFormControl" (delayedInput)="searchEngine($event)" placeholder="Ex. Animal, Lámina">
         <mat-error *ngIf="searchFormControl.hasError('required')">
-          Favoritefood is <strong>required</strong>
+          Buscar productos es <strong>requerido :(</strong>
         </mat-error>
       </mat-form-field>
     </form>
   </div>
 
   <div class="card-container">
+
+    <app-products-list [search]="search"></app-products-list>
+    <!-- <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Shiba Inu</mat-card-title>
+        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+          bred for hunting.
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
+    </mat-card> -->
+
     <a class="card" target="_blank" rel="noopener" href="https://angular.io/tutorial">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
 
