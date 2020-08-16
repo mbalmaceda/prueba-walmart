@@ -22,12 +22,13 @@ public class SearchProductServiceImpl implements SearchProductService {
 
   @Override
   public List<Products> getProductBySearch(Search search) {
-    List<Products> productsList = findProductBySearchString(search.getSearch());
+    List<Products> productsList = findProductBySearchString(search.getSearch(),
+        search.isSearchNumeric());
     return search.isPalindrome() ? palindromeDiscount(productsList) : productsList;
   }
 
-  private List<Products> findProductBySearchString(String searchString) {
-    if (StringUtils.isNumeric(searchString)) {
+  private List<Products> findProductBySearchString(String searchString, boolean isNumeric) {
+    if (isNumeric) {
       List<Products> productsList = new ArrayList<>();
       productsList.add(productRepository.findByCode(Long.valueOf(searchString))
           .orElseThrow(() -> new ProductNotFoundException(searchString)));
@@ -41,18 +42,9 @@ public class SearchProductServiceImpl implements SearchProductService {
   private List<Products> palindromeDiscount(List<Products> productsList) {
     return productsList.stream()
         .map(p -> Products.builder()
-            ._id(p.get_id())
-            .code(p.getCode()).brand(p.getBrand())
-            .description(p.getDescription())
-            .image(p.getImage())
-            .price(p.getPrice())
-            .priceDiscount((p.getPrice() * dcto) / 100)
+            ._id(p.get_id()).code(p.getCode()).brand(p.getBrand()).description(p.getDescription())
+            .image(p.getImage()).price(p.getPrice()).priceDiscount((p.getPrice() * dcto) / 100)
             .build())
         .collect(Collectors.toList());
-  }
-
-  @Override
-  public List<Products> getAllProducts() {
-    return productRepository.findAll();
   }
 }

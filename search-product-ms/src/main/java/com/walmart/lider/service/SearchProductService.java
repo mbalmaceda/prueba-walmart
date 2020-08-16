@@ -9,6 +9,4 @@ import org.springframework.stereotype.Service;
 public interface SearchProductService {
 
   List<Products> getProductBySearch(Search search);
-
-  List<Products> getAllProducts();
 }

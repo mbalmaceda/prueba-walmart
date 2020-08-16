@@ -22,20 +22,9 @@ public class SearchEngineController {
   @Autowired
   private SearchProductService searchProductService;
 
-  @GetMapping("/all")
-  public List<Products> getAllProducts() {
-    return searchProductService.getAllProducts();
-  }
-
   @GetMapping("/products/{search}")
   public List<Products> getAllProductsBySearchParam(@PathVariable String search) {
-    log.info("Request search: ", search);
+    log.info("Request search: {}", search);
     return searchProductService.getProductBySearch(Search.builder().search(search).build());
-  }
-
-  @PostMapping("/products")
-  public List<Products> getAllProductsBySearchEngine(@RequestBody Search search) {
-    log.info("Request search: ", search);
-    return searchProductService.getProductBySearch(search);
   }
 }

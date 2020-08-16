@@ -35,6 +35,15 @@ export class SearchProductRestService {
     )
   }
 
+  getProductsBySearchGET(searchInput): Observable<Product[]> {
+    console.log(JSON.stringify(searchInput));
+    return this.http.get<Product[]>(this.apiURL + '/products/'+searchInput.search)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+
   handleError(error) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {

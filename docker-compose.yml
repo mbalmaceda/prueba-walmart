@@ -1,0 +1,63 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+version: '3'
+
+#Define services
+services:
+
+  #MongoDB Database provided by Walmart
+  mongodb-product:
+    image: "mongo:3.6.8"
+    container_name: mongodb-local
+
+    #Environment variable for DB name, user and password
+    environment:
+      - POSTGRES_DB=scrum
+      - POSTGRES_USER=scrum
+      - POSTGRES_PASSWORD=scrum
+
+  # #PostgreSQL Database for the application
+  # scrum-postgres:
+  #   image: "postgres:9.6-alpine"
+  #   container_name: scrum-postgres
+  #   #Volume mounted for database for the storage
+  #   volumes:
+  #     - scrum-data:/var/lib/postgresql/data
+  #   ports:
+  #     - 5432:5432 # Forward the exposed port 5432 on the container to port 5432 on the host machine
+
+  #   #Environment variable for DB name, user and password
+  #   environment:
+  #     - POSTGRES_DB=scrum
+  #     - POSTGRES_USER=scrum
+  #     - POSTGRES_PASSWORD=scrum
+
+  #Back-end Spring Boot Application
+  search-product-ms:
+    #The docker file in scrum-app build the jar and provides the docker image with the following name.
+    build: ./scrum-app
+    container_name: search-product-ms
+
+    #Environment variables for Spring Boot Application.
+    environment:
+      - MONGODB_USERNAME=productListUser
+      - MONGODB_PASSWORD=productListPassword
+      - MONGODB_DATABASE=promotions
+      - MONGODB_PORT=27017
+      - MONGODB_HOST=mongodb-local
+    ports:
+      - 8080:8080 # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    links:
+      - mongodb-product
+
+  #Fron-end Angular Application
+  search-engine-front:
+    build: ./scrum-ui
+    container_name: scrum-ui
+    ports:
+      - 4200:80
+    links:
+      - scrum-app
+
+#Volumes for DB data
+volumes:
+  scrum-data:
