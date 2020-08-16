@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/api")
 @Slf4j
 public class SearchEngineController {
 
@@ -27,14 +27,14 @@ public class SearchEngineController {
     return searchProductService.getAllProducts();
   }
 
-  @GetMapping("/{idProduct}")
-  public Products getProductByIdRequestParam(@PathVariable Long idProduct) {
-    return searchProductService.getProductById(idProduct);
+  @GetMapping("/products/{search}")
+  public List<Products> getAllProductsBySearchParam(@PathVariable String search) {
+    log.info("Request search: ", search);
+    return searchProductService.getProductBySearch(Search.builder().search(search).build());
   }
 
-
-  @PostMapping("/")
-  public List<Products> getAllProductsBySearchEngine(@RequestBody @Valid Search search) {
+  @PostMapping("/products")
+  public List<Products> getAllProductsBySearchEngine(@RequestBody Search search) {
     log.info("Request search: ", search);
     return searchProductService.getProductBySearch(search);
   }

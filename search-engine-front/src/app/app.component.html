@@ -340,6 +340,9 @@
         <mat-error *ngIf="searchFormControl.hasError('required')">
           Buscar productos es <strong>requerido :(</strong>
         </mat-error>
+        <mat-error *ngIf="searchFormControl.hasError('minLength')">
+          Ingresa minimo 3 caracteres
+        </mat-error>
       </mat-form-field>
     </form>
   </div>

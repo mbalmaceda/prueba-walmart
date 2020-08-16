@@ -1,0 +1,8 @@
+{
+    "/*.svg": {
+        "target": "http://www.lider.cl/catalogo/images/",
+        "secure": false,
+        "loglevel": "debug",
+        "changeOrigin": true
+    }
+}

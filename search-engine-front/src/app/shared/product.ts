@@ -4,5 +4,7 @@ export class Product {
     brand: string;
     description: string;
     image: string;
+    imageName?: string;
     price: number;
+    priceDiscount?: number;
 }

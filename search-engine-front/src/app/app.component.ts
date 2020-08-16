@@ -12,11 +12,11 @@ export class AppComponent {
   search: any = { search : ''};
 
   searchFormControl = new FormControl('', [
-    Validators.required
+    Validators.required,
+    Validators.minLength(3)
   ]);
   
   searchEngine($event: Event) {
-    console.log(($event.target as HTMLInputElement).value);
     this.search = { search : ($event.target as HTMLInputElement).value};
   }
 }

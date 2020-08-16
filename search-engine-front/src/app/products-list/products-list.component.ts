@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SearchProductRestService } from "../shared/search-product-rest.service";
-import { Observable } from 'rxjs';
 import { Product } from '../shared/product';
 
 @Component({
@@ -10,9 +9,6 @@ import { Product } from '../shared/product';
 })
 export class ProductsListComponent {
   private _search;
-  
-  @HostBinding("style.--some-var")
-  private value: number;
 
   get search(): any {
     return this._search;
@@ -20,12 +16,17 @@ export class ProductsListComponent {
 
   @Input()
   set search(val:any) {
-    console.log('previous item = ', this._search);
-    console.log('currently selected item=', val);
     this._search = val;
-    this.searchProductRest.getProductsBySearch(this.search).subscribe(data => {
-      this.productsList = data;
-    });
+    if(this._search.search){
+      this.searchProductRest.getProductsBySearch(this.search).subscribe(data => {
+        this.productsList = data;
+        console.log(this.productsList);
+        this.productsList.map(p => {
+          const imgSplit = p.image.split("/");
+          p.imageName = imgSplit[imgSplit.length -1];
+        })
+      });
+    }
   }
 
   productsList: Product[] = [];
