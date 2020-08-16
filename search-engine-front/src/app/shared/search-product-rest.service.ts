@@ -26,9 +26,9 @@ export class SearchProductRestService {
     )
   }
 
-  getProductsBySearch(search): Observable<Product> {
+  getProductsBySearch(search): Observable<Product[]> {
     console.log(JSON.stringify(search));
-    return this.http.post<Product>(this.apiURL + '/products/', JSON.stringify(search), this.httpOptions)
+    return this.http.post<Product[]>(this.apiURL + '/products/', JSON.stringify(search), this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.handleError)

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +9,6 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   title = 'search-engine-front';
   delayTime = 500;
-  searches: string[] = [];
-  
   search: any = { search : ''};
 
   searchFormControl = new FormControl('', [
