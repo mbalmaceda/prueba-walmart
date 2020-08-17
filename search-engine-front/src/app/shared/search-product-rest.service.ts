@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Product } from './product';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
@@ -12,12 +12,6 @@ export class SearchProductRestService {
   private apiURL = environment.searchEngineAppUrl
 
   constructor(private http: HttpClient) { }
-
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  }
 
   getProductsBySearch(searchInput): Observable<Product[]> {
     console.log(JSON.stringify(searchInput));
