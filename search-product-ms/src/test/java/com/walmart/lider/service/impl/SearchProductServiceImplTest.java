@@ -2,6 +2,7 @@ package com.walmart.lider.service.impl;
 
 import static com.walmart.lider.TestUtil.getProductList;
 import static com.walmart.lider.TestUtil.getProductNumeric;
+import static com.walmart.lider.TestUtil.getSearchCharacter;
 import static com.walmart.lider.TestUtil.getSearchNumeric;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -19,6 +20,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.util.Streamable;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -45,13 +47,14 @@ public class SearchProductServiceImplTest {
     assertNotNull(productsList);
   }
 
-//  @Test
-//  public void getProductByCharacterPalindromeSearch() {
-//
-//  }
-//
-//  @Test
-//  public void getProductByCharacterNotPalindromeSearch() {
-//
-//  }
+  @Test
+  public void getProductByCharacterPalindromeSearch() {
+    when(productRepository.findByBrandContaining(Mockito.anyString()))
+        .thenReturn(Streamable.of(getProductList()));
+    when(productRepository.findByDescriptionContaining(Mockito.anyString()))
+        .thenReturn(Streamable.of(getProductList()));
+
+    List<Products> productsList = searchProductService.getProductBySearch(getSearchCharacter(true));
+    assertNotNull(productsList);
+  }
 }

@@ -40,4 +40,8 @@ public class TestUtil {
   public static Search getSearchNumeric(){
     return Search.builder().search("181").build();
   }
+
+  public static Search getSearchCharacter(boolean flagPalindrome){
+    return Search.builder().search(flagPalindrome ? "assa" : "qwerty").build();
+  }
 }
