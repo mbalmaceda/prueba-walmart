@@ -1,14 +1,10 @@
 ## Search Engine Walmart Application
 
-This is a simple implementation of a Scrum Board, a tool that helps visualize and manage work. Originally it was first created in Toyota automotive, but nowadays it's widely used in software development.
+This project is an implementation of such board and made of 3 separate Docker containers that holds:
 
-A Scrum Board is usually made of 3 columns - *TODO*, *InProgres*s & *Done*. In each column there are Post-it notes that represents task and their status.
-
-As already stated this project is an implementation of such board and made of 3 separate Docker containers that holds:
-
-- MongoBD provided by Walmart
-- Java backend (Spring Boot)
-- Angular frontend
+- MongoBD
+- Spring Boot
+- Angular
 
 The entry point for a user is a website which is available under the
 address: **http://localhost:4200/**
@@ -75,7 +71,7 @@ scrum-postgres:
       - POSTGRES_PASSWORD:scrum
 ```
 
-#### scrum-app (REST API)
+#### search-product-app (REST API)
 
 This app is also put in Docker container and its definition can be found
 in a file *scrum-app/Dockerfile*. 

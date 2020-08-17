@@ -3,12 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from './product';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchProductRestService {
-  apiURL = 'http://localhost:8080/api';
+  private apiURL = environment.searchEngineAppUrl
 
   constructor(private http: HttpClient) { }
 
@@ -18,17 +19,9 @@ export class SearchProductRestService {
     })
   }
 
-  getAllProducts(): Observable<Product> {
-    return this.http.get<Product>(this.apiURL + '/products/all')
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    )
-  }
-
   getProductsBySearch(searchInput): Observable<Product[]> {
     console.log(JSON.stringify(searchInput));
-    return this.http.get<Product[]>(this.apiURL + '/products/'+searchInput.search)
+    return this.http.get<Product[]>(this.apiURL + '/products/'+ searchInput.search)
     .pipe(
       retry(1),
       catchError(this.handleError)

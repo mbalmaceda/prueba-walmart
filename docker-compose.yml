@@ -39,7 +39,7 @@ services:
       - 8080:8080 # Forward the exposed port 8080 on the container to port 8080 on the host machine
     links:
       - mongo_seed
-  #Fron-end Angular Application
+  # Fron-end Angular Application
   search-engine-app:
     build: ./search-engine-front
     container_name: search-engine-app
