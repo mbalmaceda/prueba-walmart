@@ -20,7 +20,6 @@ export class ProductsListComponent {
     if(this._search.search){
       this.searchProductRest.getProductsBySearch(this.search).subscribe(data => {
         this.productsList = data;
-        console.log(this.productsList);
         this.productsList.map(p => {
           const imgSplit = p.image.split("/");
           p.imageName = imgSplit[imgSplit.length -1];

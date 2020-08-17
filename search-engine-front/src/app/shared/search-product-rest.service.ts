@@ -14,7 +14,6 @@ export class SearchProductRestService {
   constructor(private http: HttpClient) { }
 
   getProductsBySearch(searchInput): Observable<Product[]> {
-    console.log(JSON.stringify(searchInput));
     return this.http.get<Product[]>(this.apiURL + '/products/'+ searchInput.search)
     .pipe(
       retry(1),

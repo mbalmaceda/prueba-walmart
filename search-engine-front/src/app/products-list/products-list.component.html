@@ -1,27 +1,3 @@
-<!-- <div *ngIf="productsList.length !== 0" class="card-container">
-
-  <mat-card class="example-card" *ngFor="let product of productsList">
-    <img mat-card-image [src]="product.imageName" alt="{{ product.code }}">
-    <mat-card-header>
-      <mat-card-title>{{ product.brand }}</mat-card-title>
-      <mat-card-subtitle>{{ product.code }}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-card-title>{{ product.price | currency:'CLP'}}</mat-card-title>
-      <mat-card-title>{{ product.priceDiscount | currency:'CLP'}}</mat-card-title>
-      <p>
-        {{ product.description }}
-      </p>
-    </mat-card-content>
-    <mat-card-actions class="text-center">
-      <button mat-button>Agregar</button>
-    </mat-card-actions>
-  </mat-card>
-
-</div> -->
-
-
-
 <div *ngIf="productsList.length !== 0" class="content" fxLayout="row wrap">
   <div fxFlex="25%" *ngFor="let product of productsList">
     <mat-card class="mat-elevation-z4 margin-card">

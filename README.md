@@ -60,3 +60,6 @@ This is a real endpoint for a user where they can search their favorite products
 *search-product-app*.
 
 It can be entered using link: **http://localhost:4200/**
+
+Reference Image:
+![Reference Image](https://github.com/mbalmaceda/prueba-walmart/search-engine-front/src/assets/search-engine-walmart.png?raw=true)
