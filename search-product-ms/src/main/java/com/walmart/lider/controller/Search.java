@@ -16,12 +16,9 @@ public class Search {
   private String search;
 
   public boolean isPalindrome() {
-    if (!this.isSearchNumeric()) {
-      String temp = search.replaceAll("\\s+", "").toLowerCase();
-      return IntStream.range(0, temp.length() / 2)
-          .noneMatch(i -> temp.charAt(i) != temp.charAt(temp.length() - i - 1));
-    }
-    return Boolean.FALSE;
+    String temp = search.replaceAll("\\s+", "").toLowerCase();
+    return IntStream.range(0, temp.length() / 2)
+        .noneMatch(i -> temp.charAt(i) != temp.charAt(temp.length() - i - 1));
   }
 
   public boolean isSearchNumeric() {

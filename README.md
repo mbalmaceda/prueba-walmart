@@ -1,6 +1,6 @@
 ## Search Engine Walmart Application
 
-This project is an implementation of such board and made of 3 separate Docker containers that holds:
+This project is an implementation of the 'Desafio Walmart' and was made by 3 separate Docker containers that holds:
 
 - MongoBD
 - Spring Boot
@@ -20,8 +20,6 @@ Instructions how to install **Docker** on [Ubuntu](https://docs.docker.com/insta
 **Docker Compose** is already included in installation packs for *Windows* and *Mac*, so only Ubuntu users needs to follow [this instructions](https://docs.docker.com/compose/install/) .
 
 
-Install the repository https://github.com/walmartdigital/products-db
-
 ### How to run it?
 
 An entire application can be ran with a single command in a terminal:
@@ -39,49 +37,26 @@ $ docker-compose down
 
 ---
 
-#### scrum-postgres (Database)
-
-PostgreSQL database contains only single schema with two tables - scrum
-and task table.
-
+#### mongodb (Database)
 After running the app it can be accessible using this connectors:
 
+- Database: *promotions*
+- User: *productListUser*
+- Password: *productListPassword*
 
-- Host: *localhost*
-- Database: *scrum*
-- User: *scrum*
-- Password: *scrum*
-
-
-Like other parts of application Postgres database is containerized and
+Like other parts of application Mongo database is containerized and
 the definition of its Docker container can be found in
 *docker-compose.yml* file.
-
-```yml
-scrum-postgres:
-    image: "postgres:9.6-alpine"
-    container_name: scrum-postgres
-    volumes:
-      - scrum-data:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
-    environment:
-      - POSTGRES_DB:scrum
-      - POSTGRES_USER:scrum
-      - POSTGRES_PASSWORD:scrum
-```
 
 #### search-product-app (REST API)
 
 This app is also put in Docker container and its definition can be found
-in a file *scrum-app/Dockerfile*. 
-
+in a file *search-product-ms/Dockerfile*. 
 
 
 #### search-engine-front (Frontend)
 
-This is a real endpoint for a user where they can manipulate their
-scrums and tasks. It consumes the REST API endpoints provided by
-*scrum-app*.
+This is a real endpoint for a user where they can search their favorite products. It consumes the REST API endpoints provided by
+*search-product-app*.
 
 It can be entered using link: **http://localhost:4200/**
