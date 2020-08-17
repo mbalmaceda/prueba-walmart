@@ -1,4 +1,4 @@
-## Search Products Application
+## Search Engine Walmart Application
 
 This is a simple implementation of a Scrum Board, a tool that helps visualize and manage work. Originally it was first created in Toyota automotive, but nowadays it's widely used in software development.
 
@@ -21,10 +21,10 @@ In order to run this application you need to install two tools: **Docker** & **D
 
 Instructions how to install **Docker** on [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/), [Windows](https://docs.docker.com/docker-for-windows/install/) , [Mac](https://docs.docker.com/docker-for-mac/install/) .
 
-**Dosker Compose** is already included in installation packs for *Windows* and *Mac*, so only Ubuntu users needs to follow [this instructions](https://docs.docker.com/compose/install/) .
+**Docker Compose** is already included in installation packs for *Windows* and *Mac*, so only Ubuntu users needs to follow [this instructions](https://docs.docker.com/compose/install/) .
 
 
-
+Install the repository https://github.com/walmartdigital/products-db
 
 ### How to run it?
 

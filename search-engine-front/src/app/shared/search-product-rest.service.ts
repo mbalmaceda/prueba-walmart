@@ -8,7 +8,7 @@ import { retry, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class SearchProductRestService {
-  apiURL = 'http://localhost:8089/api';
+  apiURL = 'http://localhost:8080/api';
 
   constructor(private http: HttpClient) { }
 
@@ -26,16 +26,7 @@ export class SearchProductRestService {
     )
   }
 
-  getProductsBySearch(search): Observable<Product[]> {
-    console.log(JSON.stringify(search));
-    return this.http.post<Product[]>(this.apiURL + '/products/', JSON.stringify(search), this.httpOptions)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    )
-  }
-
-  getProductsBySearchGET(searchInput): Observable<Product[]> {
+  getProductsBySearch(searchInput): Observable<Product[]> {
     console.log(JSON.stringify(searchInput));
     return this.http.get<Product[]>(this.apiURL + '/products/'+searchInput.search)
     .pipe(

@@ -8,4 +8,4 @@ RUN mvn -f pom.xml clean package
 FROM openjdk:8-alpine
 COPY --from=build /workspace/target/*.jar app.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"]               
