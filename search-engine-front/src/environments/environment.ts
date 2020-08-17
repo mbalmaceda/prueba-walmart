@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  searchEngineAppUrl: 'http://localhost:8080/api'
+  searchEngineAppUrl: 'http://localhost:8080/api',
+  urlImagesLider : 'http://www.lider.cl/catalogo/images/'
 };
 
 /*
