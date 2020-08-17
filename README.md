@@ -1,6 +1,6 @@
 ## Search Engine Walmart Application
 
-This project is an implementation of the 'Desafio Walmart' and was made by 3 separate Docker containers that holds:
+This project is an implementation of 'Desafio Walmart' and was made by 3 separate Docker containers that holds:
 
 - MongoBD
 - Spring Boot
